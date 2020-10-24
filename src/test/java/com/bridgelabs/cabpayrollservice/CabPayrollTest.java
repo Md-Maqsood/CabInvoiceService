@@ -13,4 +13,12 @@ public class CabPayrollTest {
 		double fare=cabInvoice.calculateFare(distance,time);
 		Assert.assertEquals(25, fare, 0.0);
 	}
+	@Test
+	public void givenLessDistanceOrTimeShouldReturnMinFare() {
+		CabInvoice cabInvoice=new CabInvoice();
+		double distance=0.1;
+		int time=5;
+		double fare=cabInvoice.calculateFare(distance,time);
+		Assert.assertEquals(5, fare, 0.0);
+	}
 }
