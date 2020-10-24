@@ -16,4 +16,7 @@ public class CabInvoice {
 				return totalFare;
 			}
 	}
+	public double calculateFare(Ride[] rides) {
+		return 0.0;
+	}
 }
