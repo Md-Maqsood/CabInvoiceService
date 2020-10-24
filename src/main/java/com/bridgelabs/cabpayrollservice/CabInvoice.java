@@ -1,10 +1,6 @@
 package com.bridgelabs.cabpayrollservice;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 public class CabInvoice {
-	private static final Logger logger = LogManager.getLogger(CabInvoice.class);
 	public static final double MINIMUM_COST_PER_KILOMETER = 10.0;
 	public static final int COST_PER_TIME = 1;
 	public static final double MINIMUM_FARE=5.0;
@@ -16,11 +12,11 @@ public class CabInvoice {
 				return totalFare;
 			}
 	}
-	public double calculateFare(Ride[] rides) {
+	public InvoiceSummary calculateFare(Ride[] rides) {
 		double totalFare=0;
 		for(Ride ride:rides) {
 			totalFare+=this.calculateFare(ride.distance, ride.time);
 		}
-		return totalFare;
+		return null;
 	}
 }
