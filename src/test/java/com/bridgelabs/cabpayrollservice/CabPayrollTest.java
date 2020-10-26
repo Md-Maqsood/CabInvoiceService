@@ -6,11 +6,11 @@ import org.junit.Test;
 
 public class CabPayrollTest {
 
-	private CabInvoice cabInvoice;
+	private CabInvoiceService cabInvoice;
 
 	@Before
 	public void setUp() {
-		this.cabInvoice = new CabInvoice();
+		this.cabInvoice = new CabInvoiceService();
 	}
 
 	@Test
@@ -34,6 +34,16 @@ public class CabPayrollTest {
 		Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1), };
 		InvoiceSummary summary = cabInvoice.calculateFare(rides);
 		InvoiceSummary expectedSummary = new InvoiceSummary(2, 30.0);
+		Assert.assertEquals(expectedSummary, summary);
+	}
+	
+	@Test
+	public void givenUserIdRidesShouldReturnInvoiceSummary() {
+		String userId="a@b.com";
+		Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1), };
+		cabInvoice.addRides(userId, rides);
+		InvoiceSummary summary=cabInvoice.getInvoiceSummary(userId);
+		InvoiceSummary expectedSummary= new InvoiceSummary(2, 30.0);
 		Assert.assertEquals(expectedSummary, summary);
 	}
 }

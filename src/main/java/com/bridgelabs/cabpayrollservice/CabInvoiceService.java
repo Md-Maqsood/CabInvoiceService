@@ -1,6 +1,6 @@
 package com.bridgelabs.cabpayrollservice;
 
-public class CabInvoice {
+public class CabInvoiceService {
 	public static final double MINIMUM_COST_PER_KILOMETER = 10.0;
 	public static final int COST_PER_TIME = 1;
 	public static final double MINIMUM_FARE = 5.0;
@@ -17,5 +17,13 @@ public class CabInvoice {
 			totalFare += this.calculateFare(ride.distance, ride.time);
 		}
 		return new InvoiceSummary(rides.length, totalFare);
+	}
+
+	public void addRides(String userId, Ride[] rides) {
+		
+	}
+
+	public InvoiceSummary getInvoiceSummary(String userId) {
+		return null;
 	}
 }
