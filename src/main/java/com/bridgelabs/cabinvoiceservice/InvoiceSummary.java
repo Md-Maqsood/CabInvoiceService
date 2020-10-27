@@ -1,9 +1,13 @@
-package com.bridgelabs.cabpayrollservice;
+package com.bridgelabs.cabinvoiceservice;
 
 public class InvoiceSummary {
 	private final int numOfRides;
 	private final double totalFare;
 	private final double averageFare;
+
+	public double getTotalFare() {
+		return totalFare;
+	}
 
 	public InvoiceSummary(int numOfRides, double totalFare) {
 		this.numOfRides = numOfRides;

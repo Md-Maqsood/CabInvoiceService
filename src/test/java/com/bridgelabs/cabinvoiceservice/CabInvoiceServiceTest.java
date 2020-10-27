@@ -1,10 +1,16 @@
-package com.bridgelabs.cabpayrollservice;
+package com.bridgelabs.cabinvoiceservice;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class CabPayrollTest {
+import com.bridgelabs.cabinvoiceservice.CabInvoiceService;
+import com.bridgelabs.cabinvoiceservice.CabRide;
+import com.bridgelabs.cabinvoiceservice.InvoiceSummary;
+import com.bridgelabs.cabinvoiceservice.Ride;
+import com.bridgelabs.cabinvoiceservice.RideRepository;
+
+public class CabInvoiceServiceTest {
 
 	private CabInvoiceService cabInvoice;
 	private RideRepository rideRepository = null;
@@ -25,7 +31,8 @@ public class CabPayrollTest {
 	public void givenDistanceAndTimeShouldReturnTotalFare() {
 		double distance = 2.0;
 		int time = 5;
-		double fare = cabInvoice.calculateFare(distance, time);
+		Ride[] rides= {new Ride(CabRide.NORMAL,distance,time)};
+		double fare = cabInvoice.calculateFare(rides).getTotalFare();
 		Assert.assertEquals(25, fare, 0.0);
 	}
 
@@ -33,7 +40,8 @@ public class CabPayrollTest {
 	public void givenLessDistanceOrTimeShouldReturnMinFare() {
 		double distance = 0.1;
 		int time = 1;
-		double fare = cabInvoice.calculateFare(distance, time);
+		Ride[] rides= {new Ride(CabRide.NORMAL,distance,time)};
+		double fare = cabInvoice.calculateFare(rides).getTotalFare();
 		Assert.assertEquals(5, fare, 0.0);
 	}
 

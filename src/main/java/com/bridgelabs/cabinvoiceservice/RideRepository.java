@@ -1,4 +1,4 @@
-package com.bridgelabs.cabpayrollservice;
+package com.bridgelabs.cabinvoiceservice;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,16 +13,16 @@ public class RideRepository {
 	}
 
 	public void addRide(String userId, Ride[] rides) {
-		// TODO Auto-generated method stub
 		ArrayList<Ride> rideList = this.userRides.get(userId);
 		if (rideList == null) {
 			this.userRides.put(userId, new ArrayList<>(Arrays.asList(rides)));
+		}else {
+			rideList.addAll(Arrays.asList(rides));
 		}
 
 	}
 
 	public Ride[] getRides(String userId) {
-		// TODO Auto-generated method stub
 		return this.userRides.get(userId).toArray(new Ride[0]);
 	}
 
